@@ -19,7 +19,7 @@ def predict(X, y):
     predict_X = _get_user_input()
     _ml_model.fit(X, y)
     predictions = _ml_model.predict(predict_X)
-    print("Predictions:", predictions)
+    print("Predictions:", predictions[0])
 
 
 def _get_user_input():
@@ -35,10 +35,8 @@ def _get_user_input():
     special = int(input("Enter your choice: "))
     print("How do you evaluate your material well-being? (0-2)")
     material = int(input("Enter your choice: "))
-    print("What was your final grade for that subject? Attention, German grading system is used! (1-5)")
-    grade = int(input("Enter your choice: "))
 
-    return [intellectual, hours, special, material, grade]
+    return [[intellectual, hours, special, material]]
 
 
 def print_model_info(X, y):
@@ -66,9 +64,9 @@ def main():
 
     X = pd_data[_features[:-1]]
     y = pd_data[_features[-1]]
-    split_and_test(X, y)
+    # split_and_test(X, y)
     # print_model_info(X, y)
-    # predict(X, y)
+    predict(X, y)
 
 if __name__ == '__main__':
     main()
